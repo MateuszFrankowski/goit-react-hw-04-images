@@ -41,6 +41,7 @@ export const App = () => {
     setPageNr(pageNr + 1);
   };
   const handleImagesRequest = async (searchQuery, pageNr) => {
+    if (!searchQuery) return;
     setIsLoading(true);
     try {
       const fetchData = await fetchImagesWithQuery(searchQuery, pageNr);

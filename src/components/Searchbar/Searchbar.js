@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 export const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
@@ -16,6 +16,7 @@ export const Searchbar = ({ onSubmit }) => {
       setQuery(value);
     }
   };
+
   return (
     <header className={css.Searchbar}>
       <form className={css.form} onSubmit={handleSubmit}>
