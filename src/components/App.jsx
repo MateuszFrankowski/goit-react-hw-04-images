@@ -33,7 +33,6 @@ export const App = () => {
   };
   const handlemodal = evt => {
     const { id } = evt.target;
-
     setActiveImageId(Number(id));
     setShowModal(true);
   };
@@ -45,12 +44,12 @@ export const App = () => {
     setIsLoading(true);
     try {
       const fetchData = await fetchImagesWithQuery(searchQuery, pageNr);
-      const { images } = fetchData;
+      const { newImages } = fetchData;
       const { totalHits } = fetchData;
       if (pageNr > 1) {
-        setImages(images.concat(images));
+        setImages(images.concat(newImages));
       } else {
-        setImages(images);
+        setImages(newImages);
       }
       setTotalHits(totalHits);
     } catch (error) {
