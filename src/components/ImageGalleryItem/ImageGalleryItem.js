@@ -1,6 +1,6 @@
 import css from './ImageGalleryItem.module.css';
 import React, { PureComponent } from 'react';
-
+import PropTypes from 'prop-types';
 export class ImageGalleryItem extends PureComponent {
   render() {
     const { id, webformatURL, largeImageURL, onClick } = this.props;
@@ -16,3 +16,9 @@ export class ImageGalleryItem extends PureComponent {
     );
   }
 }
+ImageGalleryItem.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};

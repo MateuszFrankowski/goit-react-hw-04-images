@@ -1,5 +1,6 @@
 import css from './Modal.module.css';
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 export class Modal extends PureComponent {
   render() {
@@ -13,3 +14,8 @@ export class Modal extends PureComponent {
     );
   }
 }
+Modal.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};
