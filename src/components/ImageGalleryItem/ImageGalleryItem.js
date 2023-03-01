@@ -18,7 +18,7 @@ export class ImageGalleryItem extends PureComponent {
 }
 ImageGalleryItem.propTypes = {
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
 };
