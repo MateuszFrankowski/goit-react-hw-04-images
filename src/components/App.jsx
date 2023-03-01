@@ -39,28 +39,30 @@ export const App = () => {
   const handleLoadMore = () => {
     setPageNr(pageNr + 1);
   };
-  const handleImagesRequest = async (searchQuery, pageNr) => {
-    if (!searchQuery) return;
-    setIsLoading(true);
-    try {
-      const fetchData = await fetchImagesWithQuery(searchQuery, pageNr);
-      const { newImages } = fetchData;
-      const { totalHits } = fetchData;
-      if (pageNr > 1) {
-        setImages(images.concat(newImages));
-      } else {
-        setImages(newImages);
-      }
-      setTotalHits(totalHits);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
   useEffect(() => {
+    const handleImagesRequest = async (searchQuery, pageNr) => {
+      if (!searchQuery) return;
+      setIsLoading(true);
+      try {
+        const fetchData = await fetchImagesWithQuery(searchQuery, pageNr);
+        const { newImages } = fetchData;
+        const { totalHits } = fetchData;
+        if (pageNr > 1) {
+          setImages(e => e.concat(newImages));
+        } else {
+          setImages(newImages);
+        }
+        setTotalHits(totalHits);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
     handleImagesRequest(searchQuery, pageNr);
   }, [searchQuery, pageNr]);
+
   useEffect(() => {
     document.addEventListener('keydown', handleEsc, false);
     return () => {
